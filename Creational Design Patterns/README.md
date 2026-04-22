@@ -8,7 +8,10 @@ Creational design patterns are design patterns that deal with object creation me
 
 - **Factory Pattern**: Used to create objects without specifying the exact class of object that will be created.
 - **Abstract Factory Pattern**: Used to create families of related or dependent objects. It's a "Factory of Factories" that ensures consistency across multiple related products.
+- **Builder Pattern**: Used to separate the construction of a complex object from its representation, allowing the creation of different representations using the same construction process (solves Telescoping Constructor problem).
 
 ---
 ## Navigation
 - [Factory Pattern](./Factory%20Pattern/)
+- [Abstract Factory Pattern](./Abstract%20Factory%20Pattern/)
+- [Builder Pattern](./Builder%20Pattern/)
