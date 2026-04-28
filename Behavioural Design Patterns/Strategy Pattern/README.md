@@ -3,7 +3,7 @@
 > "Define a family of algorithms, encapsulate each one, and make them interchangeable. Strategy lets the algorithm vary independently from clients that use it."
 
 ## Overview
-The Strategy pattern is a behavioral design pattern that allows an algorithm's behavior to be selected at runtime. It defines a family of algorithms, encapsulates each one, and makes them interchangeable.
+The Strategy pattern is a behavioural design pattern that allows an algorithm's behavior to be selected at runtime. It defines a family of algorithms, encapsulates each one, and makes them interchangeable.
 
 ### When to Use?
 1. **Multiple Versions of an Algorithm**: When you have many related classes that differ only in their behavior.

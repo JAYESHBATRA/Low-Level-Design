@@ -1,6 +1,6 @@
-# Behavioral Design Patterns
+# Behavioural Design Patterns
 
-Behavioral design patterns are concerned with algorithms and the assignment of responsibilities between objects. They describe not just patterns of objects or classes but also the patterns of communication between them. Behavioral patterns characterize complex control flow that's difficult to follow at runtime.
+Behavioural design patterns are concerned with algorithms and the assignment of responsibilities between objects. They describe not just patterns of objects or classes but also the patterns of communication between them. Behavioural patterns characterize complex control flow that's difficult to follow at runtime.
 
 ## Patterns Covered
 > [!NOTE]
