@@ -30,6 +30,12 @@ classDiagram
         +hasNext() boolean
         +next() Song
     }
+    class Song {
+        -String title
+        -String artist
+        -String genre
+        +toString() String
+    }
     class Playlist {
         -List songs
         +getIterator(IteratorType type) SongIterator
@@ -42,6 +48,9 @@ classDiagram
     SongIterator <|.. SequentialIterator
     SongIterator <|.. ShuffleIterator
     Playlist ..> SongIterator : creates
+    Playlist "1" *-- "*" Song : contains
+    SequentialIterator ..> Song : traverses
+    ShuffleIterator ..> Song : traverses
     Playlist ..> IteratorType : uses
 ```
 
