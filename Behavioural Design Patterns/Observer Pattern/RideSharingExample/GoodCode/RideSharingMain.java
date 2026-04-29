@@ -1,7 +1,7 @@
 /**
  * Main Class: Demonstration of Observer Pattern for Ride Sharing
  */
-public class Main {
+public class RideSharingMain {
     public static void main(String[] args) {
         Ride ride = new Ride("UBER-123");
 

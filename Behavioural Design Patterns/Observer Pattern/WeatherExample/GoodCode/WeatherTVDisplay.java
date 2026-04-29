@@ -1,7 +1,7 @@
 /**
  * Concrete Observer: TV Display
  */
-public class TVDisplay implements Observer {
+public class WeatherTVDisplay implements WeatherObserver {
     private float temperature;
     private float humidity;
 

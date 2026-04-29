@@ -12,9 +12,9 @@ This example demonstrates a Weather Station that tracks temperature and humidity
 - **Consequence**: Adding a new display type (like `WebDisplay` or `SmartWatchDisplay`) requires modifying the `BadWeatherStation` class, violating the **Open-Closed Principle**.
 
 ### 2. [Good Code](./GoodCode/)
-- **Design**: Uses the **Observer Pattern**. The [WeatherStation.java](./GoodCode/WeatherStation.java) implements a generic [Subject](./GoodCode/Subject.java) interface, and all displays implement a common [Observer](./GoodCode/Observer.java) interface.
+- **Design**: Uses the **Observer Pattern**. The [WeatherStation.java](./GoodCode/WeatherStation.java) implements a generic [WeatherSubject](./GoodCode/WeatherSubject.java) interface, and all displays implement a common [WeatherObserver](./GoodCode/WeatherObserver.java) interface.
 - **Result**: New displays can be added at runtime without changing a single line of code in the `WeatherStation`.
 
 ## How to Run
 - `BadCode/BadWeatherStation.java` (Demonstrates tight coupling)
-- `GoodCode/Main.java` (Demonstrates dynamic observer management and decoupled updates)
+- `GoodCode/WeatherMain.java` (Demonstrates dynamic observer management and decoupled updates)

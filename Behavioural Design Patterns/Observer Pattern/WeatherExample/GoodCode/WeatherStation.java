@@ -5,8 +5,8 @@ import java.util.List;
  * Concrete Subject: WeatherStation
  * Keeps track of its observers and notifies them when data changes.
  */
-public class WeatherStation implements Subject {
-    private List<Observer> observers;
+public class WeatherStation implements WeatherSubject {
+    private List<WeatherObserver> observers;
     private float temperature;
     private float humidity;
 
@@ -15,18 +15,18 @@ public class WeatherStation implements Subject {
     }
 
     @Override
-    public void registerObserver(Observer o) {
+    public void registerObserver(WeatherObserver o) {
         observers.add(o);
     }
 
     @Override
-    public void removeObserver(Observer o) {
+    public void removeObserver(WeatherObserver o) {
         observers.remove(o);
     }
 
     @Override
     public void notifyObservers() {
-        for (Observer observer : observers) {
+        for (WeatherObserver observer : observers) {
             observer.update(temperature, humidity);
         }
     }

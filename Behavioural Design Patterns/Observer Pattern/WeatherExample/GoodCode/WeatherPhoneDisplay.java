@@ -1,7 +1,7 @@
 /**
  * Concrete Observer: Phone Display
  */
-public class PhoneDisplay implements Observer {
+public class WeatherPhoneDisplay implements WeatherObserver {
     private float temperature;
     private float humidity;
 

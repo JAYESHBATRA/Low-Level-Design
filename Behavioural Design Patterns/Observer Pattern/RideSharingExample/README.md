@@ -17,4 +17,4 @@ In systems like Uber or Ola, a single event (e.g., "Driver Arrived") triggers di
 
 ## How to Run
 - `BadCode/BadRide.java` (Direct method calls)
-- `GoodCode/Main.java` (Decoupled event broadcasting)
+- `GoodCode/RideSharingMain.java` (Decoupled event broadcasting)

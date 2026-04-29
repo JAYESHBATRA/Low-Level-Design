@@ -3,16 +3,11 @@
  * The Ride class is aware of specific application types (PassengerApp, DriverApp).
  */
 public class BadRide {
-    private String rideId;
-    private String status;
-
     private PassengerApp passengerApp = new PassengerApp();
     private DriverApp driverApp = new DriverApp();
     private AdminDashboard adminDashboard = new AdminDashboard();
 
     public void updateStatus(String newStatus) {
-        this.status = newStatus;
-        
         // Manual updates to specific systems
         passengerApp.notifyPassenger(newStatus);
         driverApp.notifyDriver(newStatus);

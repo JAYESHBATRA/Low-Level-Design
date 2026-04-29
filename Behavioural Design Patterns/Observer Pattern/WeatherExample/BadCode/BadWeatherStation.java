@@ -4,17 +4,11 @@
  * If we want to add a new display (e.g., WebDisplay), we have to modify this class.
  */
 public class BadWeatherStation {
-    private float temperature;
-    private float humidity;
-
     // Hardcoded dependencies
     private PhoneDisplay phoneDisplay = new PhoneDisplay();
     private TVDisplay tvDisplay = new TVDisplay();
 
     public void setMeasurements(float temperature, float humidity) {
-        this.temperature = temperature;
-        this.humidity = humidity;
-        
         // Manually updating each display - brittle and not scalable
         phoneDisplay.update(temperature, humidity);
         tvDisplay.update(temperature, humidity);

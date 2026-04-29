@@ -1,13 +1,13 @@
 /**
  * Main Class: Demonstration of Observer Pattern for Weather Monitoring
  */
-public class Main {
+public class WeatherMain {
     public static void main(String[] args) {
         WeatherStation weatherStation = new WeatherStation();
 
         // Create Observers
-        PhoneDisplay phoneDisplay = new PhoneDisplay();
-        TVDisplay tvDisplay = new TVDisplay();
+        WeatherPhoneDisplay phoneDisplay = new WeatherPhoneDisplay();
+        WeatherTVDisplay tvDisplay = new WeatherTVDisplay();
 
         // Register Observers
         weatherStation.registerObserver(phoneDisplay);
