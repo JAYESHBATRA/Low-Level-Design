@@ -2,6 +2,8 @@
 .vscode/
 bin/
 out/
+target/
+*.iml
 .idea/
 .project
 .classpath
