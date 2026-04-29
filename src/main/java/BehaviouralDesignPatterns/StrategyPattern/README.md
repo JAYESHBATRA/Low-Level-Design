@@ -11,6 +11,31 @@ The Strategy pattern is a behavioural design pattern that allows an algorithm's 
 3. **Avoiding Conditional Statements**: When you have a massive `if-else` or `switch` block that selects a behavior.
 4. **Isolating Complex Logic**: When an algorithm uses data that the client shouldn't know about.
 
+## UML Diagram
+```mermaid
+classDiagram
+    class PaymentStrategy {
+        <<interface>>
+        +pay(double amount)
+    }
+    class CreditCardPayment {
+        -String cardNumber
+        +pay(double amount)
+    }
+    class UPIPayment {
+        -String upiId
+        +pay(double amount)
+    }
+    class PaymentService {
+        -PaymentStrategy strategy
+        +setStrategy(PaymentStrategy)
+        +processOrder(double amount)
+    }
+    PaymentStrategy <|.. CreditCardPayment
+    PaymentStrategy <|.. UPIPayment
+    PaymentService --> PaymentStrategy
+```
+
 ## Key Concept: Context & Strategy
 
 | Component | Responsibility |

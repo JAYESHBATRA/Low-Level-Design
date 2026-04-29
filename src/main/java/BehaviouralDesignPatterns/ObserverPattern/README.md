@@ -7,8 +7,37 @@ The Observer pattern is a behavioural design pattern that defines a subscription
 
 ### When to Use?
 1. **State Change Propagation**: When a change to one object requires changing others, and you don't know how many objects need to be changed.
-2. **Subscription Systems**: When an object should be able to notify other objects without making assumptions about who these objects are.
 3. **Decoupling Producers and Consumers**: When you want to separate the core logic of a system from the multiple ways its data might be displayed or processed.
+
+## UML Diagram
+```mermaid
+classDiagram
+    class Subject {
+        <<interface>>
+        +registerObserver(Observer)
+        +removeObserver(Observer)
+        +notifyObservers()
+    }
+    class Observer {
+        <<interface>>
+        +update(float temp, float humidity)
+    }
+    class WeatherStation {
+        -List observers
+        +registerObserver(Observer)
+        +notifyObservers()
+    }
+    class PhoneDisplay {
+        +update(float temp, float humidity)
+    }
+    class TVDisplay {
+        +update(float temp, float humidity)
+    }
+    Subject <|.. WeatherStation
+    Observer <|.. PhoneDisplay
+    Observer <|.. TVDisplay
+    WeatherStation o-- Observer
+```
 
 ## Key Concept: Subject & Observer
 
