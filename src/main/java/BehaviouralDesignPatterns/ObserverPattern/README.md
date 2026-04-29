@@ -39,6 +39,40 @@ classDiagram
     WeatherStation o-- Observer
 ```
 
+### 2. Ride Sharing System (Uber/Ola)
+```mermaid
+classDiagram
+    class RideSubject {
+        <<interface>>
+        +attach(RideObserver)
+        +detach(RideObserver)
+        +notifyObservers()
+    }
+    class RideObserver {
+        <<interface>>
+        +update(String status)
+    }
+    class Ride {
+        -List observers
+        -String status
+        +updateStatus(String status)
+    }
+    class PassengerApp {
+        +update(String status)
+    }
+    class DriverApp {
+        +update(String status)
+    }
+    class AdminDashboard {
+        +update(String status)
+    }
+    RideSubject <|.. Ride
+    RideObserver <|.. PassengerApp
+    RideObserver <|.. DriverApp
+    RideObserver <|.. AdminDashboard
+    Ride o-- RideObserver
+```
+
 ## Key Concept: Subject & Observer
 
 | Component | Responsibility |
