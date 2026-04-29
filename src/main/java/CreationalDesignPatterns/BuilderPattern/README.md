@@ -13,6 +13,33 @@ The Builder pattern is a solution to the **Telescoping Constructor** anti-patter
 ### The Solution
 The Builder pattern provides a way to build a complex object step-by-step. It typically uses an inner static class (the Builder) and **Method Chaining** (a Fluent API) to make object creation intuitive and readable.
 
+## UML Diagram
+```mermaid
+classDiagram
+    class GoodDesktop {
+        -String cpu
+        -String ram
+        -String gpu
+        -String storage
+        -boolean isBluetoothEnabled
+        -GoodDesktop(GoodDesktopBuilder builder)
+    }
+    class GoodDesktopBuilder {
+        -String cpu
+        -String ram
+        -String gpu
+        -String storage
+        -boolean isBluetoothEnabled
+        +setCPU(String) GoodDesktopBuilder
+        +setRAM(String) GoodDesktopBuilder
+        +setGPU(String) GoodDesktopBuilder
+        +setStorage(String) GoodDesktopBuilder
+        +setBluetoothEnabled(boolean) GoodDesktopBuilder
+        +build() GoodDesktop
+    }
+    GoodDesktopBuilder ..> GoodDesktop : builds
+```
+
 ## Examples in this Folder
 
 ### 1. [Bad Code](./BadCode/)

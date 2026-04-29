@@ -18,7 +18,35 @@ The Abstract Factory ensures that your application always uses a consistent fami
 | **Complexity** | Simple | More complex (Factory of Factories) |
 | **Method** | Inheritance (Subclasses override a method) | Composition (Factory object is passed to the client) |
 
-### 1. [Bad Code](./BadCode/)
+## UML Diagram
+```mermaid
+classDiagram
+    class GoodAbstractButton { <<interface>> +render() }
+    class GoodAbstractCheckbox { <<interface>> +render() }
+    class GoodAbstractWindowsButton { +render() }
+    class GoodAbstractMacButton { +render() }
+    class GoodAbstractWindowsCheckbox { +render() }
+    class GoodAbstractMacCheckbox { +render() }
+    
+    class GoodAbstractUIFactory { <<interface>> +createButton() GoodAbstractButton, +createCheckbox() GoodAbstractCheckbox }
+    class GoodAbstractWindowsFactory { +createButton() +createCheckbox() }
+    class GoodAbstractMacOSFactory { +createButton() +createCheckbox() }
+
+    GoodAbstractButton <|.. GoodAbstractWindowsButton
+    GoodAbstractButton <|.. GoodAbstractMacButton
+    GoodAbstractCheckbox <|.. GoodAbstractWindowsCheckbox
+    GoodAbstractCheckbox <|.. GoodAbstractMacCheckbox
+    
+    GoodAbstractUIFactory <|.. GoodAbstractWindowsFactory
+    GoodAbstractUIFactory <|.. GoodAbstractMacOSFactory
+    
+    GoodAbstractWindowsFactory ..> GoodAbstractWindowsButton : creates
+    GoodAbstractWindowsFactory ..> GoodAbstractWindowsCheckbox : creates
+    GoodAbstractMacOSFactory ..> GoodAbstractMacButton : creates
+    GoodAbstractMacOSFactory ..> GoodAbstractMacCheckbox : creates
+```
+
+## Examples in this Folder
 - **Design**: We use a **Single "Fat" Factory** ([BadFatUIFactory.java](./BadCode/BadFatUIFactory.java)). This factory tries to handle all components for all platforms in one class.
 - **Problem**: 
     1. **Repetitive Logic**: Every method in the factory has its own duplicate `if-else` block for platforms.

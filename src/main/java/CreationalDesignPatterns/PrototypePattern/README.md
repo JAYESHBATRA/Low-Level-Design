@@ -18,6 +18,20 @@ The Prototype pattern is a creational design pattern that allows an object to "c
 | **Risk** | Changing a list in the copy will change it in the original too. | Safe to modify anything; the copy is fully independent. |
 | **Ease** | Java's default `Object.clone()` is a shallow copy. | Must be manually implemented (often by copying field by field). |
 
+## UML Diagram
+```mermaid
+classDiagram
+    class Cloneable { <<interface>> }
+    class GoodGameCharacter {
+        -String name
+        -String type
+        -List skills
+        +clone() Object
+        +loadAssets()
+    }
+    Cloneable <|.. GoodGameCharacter
+```
+
 ## Examples in this Folder
 
 ### 1. [Bad Code](./BadCode/)

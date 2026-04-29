@@ -14,6 +14,17 @@ The Singleton pattern is used when you need to ensure that only a single instanc
 2. **Static Instance Variable**: A static field that holds the unique instance of the class.
 3. **Static Access Method**: A public static method (usually `getInstance()`) that returns the instance, creating it if it doesn't already exist.
 
+## UML Diagram
+```mermaid
+classDiagram
+    class GoodSingleton {
+        -static GoodSingleton instance
+        -GoodSingleton()
+        +static getInstance() GoodSingleton
+        +doSomething()
+    }
+```
+
 ## Examples in this Folder
 
 ### 1. [Bad Code](./BadCode/)

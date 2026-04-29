@@ -13,6 +13,32 @@ Instead of calling `new EmailNotification()` or `new SMSNotification()` directly
 - **Scalability**: Adding a new notification type (e.g., WhatsApp) is much easier. You create the new class and update the Factory; the rest of the app "just works".
 - **Maintainability**: Object creation logic is centralized in one place.
 
+## UML Diagram
+```mermaid
+classDiagram
+    class GoodFactoryNotification {
+        <<interface>>
+        +notifyUser()
+    }
+    class GoodFactoryEmailNotification {
+        +notifyUser()
+    }
+    class GoodFactorySMSNotification {
+        +notifyUser()
+    }
+    class GoodNotificationFactory {
+        +createNotification(String type) GoodFactoryNotification
+    }
+    class GoodNotificationService {
+        -GoodNotificationFactory factory
+        +sendNotification(String type)
+    }
+    GoodFactoryNotification <|.. GoodFactoryEmailNotification
+    GoodFactoryNotification <|.. GoodFactorySMSNotification
+    GoodNotificationService --> GoodNotificationFactory
+    GoodNotificationFactory ..> GoodFactoryNotification : creates
+```
+
 ## Examples in this Folder (3-Layer Architecture)
 We use a 3-layer approach: **Client (Main)** -> **Business Logic (Service)** -> **Object Creation**.
 
