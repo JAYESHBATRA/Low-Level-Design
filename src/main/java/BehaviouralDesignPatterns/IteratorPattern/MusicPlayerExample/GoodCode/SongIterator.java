@@ -1,4 +1,4 @@
-package BehaviouralDesignPatterns.IteratorPattern.GoodCode;
+package BehaviouralDesignPatterns.IteratorPattern.MusicPlayerExample.GoodCode;
 
 /**
  * Iterator Interface

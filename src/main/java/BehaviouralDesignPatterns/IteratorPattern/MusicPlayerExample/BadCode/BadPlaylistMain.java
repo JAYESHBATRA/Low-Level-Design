@@ -1,4 +1,4 @@
-package BehaviouralDesignPatterns.IteratorPattern.BadCode;
+package BehaviouralDesignPatterns.IteratorPattern.MusicPlayerExample.BadCode;
 
 import java.util.ArrayList;
 import java.util.Collections;

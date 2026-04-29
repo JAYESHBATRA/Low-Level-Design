@@ -3,84 +3,72 @@
 > "Provide a way to access the elements of an aggregate object sequentially without exposing its underlying representation." - GoF
 
 ## Overview
-The Iterator pattern is a behavioural design pattern that allows you to traverse elements of a collection without exposing its internal structure (List, Stack, Tree, etc.). It encapsulates the traversal logic into a separate object called an **Iterator**.
+The Iterator pattern is a behavioural design pattern that allows you to traverse elements of a collection without exposing its internal structure.
 
-### When to Use?
-1. **Hiding Internal Complexity**: When your collection has a complex data structure under the hood, but you want to hide this from clients.
-2. **Multiple Traversal Algorithms**: When you need different ways to traverse the same collection (e.g., Sequential, Shuffle, Depth-First, Breadth-First).
-3. **Uniform Interface**: When you want to provide a uniform interface for traversing different structures.
+---
 
-## UML Diagram
+## Comparison of Approaches
+
+| Feature | [Music Player](./MusicPlayerExample/) | [BookShelf](./BookShelfExample/) |
+| :--- | :--- | :--- |
+| **Approach** | Parameterized Factory | Formal GoF Aggregate/Iterator |
+| **Good Code** | [View Good Code](./MusicPlayerExample/GoodCode/) | [View Good Code](./BookShelfExample/GoodCode/) |
+| **Bad Code** | [View Bad Code](./MusicPlayerExample/BadCode/) | [View Bad Code](./BookShelfExample/BadCode/) |
+
+---
+
+## UML Diagrams
+
+### 1. Music Player Implementation (Parameterized Approach)
 ```mermaid
 classDiagram
-    class SongIterator {
-        <<interface>>
-        +hasNext() boolean
-        +next() Song
-    }
-    class SequentialIterator {
-        -List songs
-        -int position
-        +hasNext() boolean
-        +next() Song
-    }
-    class ShuffleIterator {
-        -List shuffledSongs
-        -int position
-        +hasNext() boolean
-        +next() Song
-    }
-    class Song {
-        -String title
-        -String artist
-        -String genre
-        +toString() String
-    }
-    class Playlist {
-        -List songs
-        +getIterator(IteratorType type) SongIterator
-    }
-    class IteratorType {
-        <<enumeration>>
-        SEQUENTIAL
-        SHUFFLE
-    }
+    class SongIterator { <<interface>> +hasNext(), +next() }
+    class Playlist { -List songs, +getIterator(IteratorType) }
+    class SequentialIterator { +hasNext(), +next() }
+    class ShuffleIterator { +hasNext(), +next() }
+    class Song { -String title, -String artist, -String genre }
+    
     SongIterator <|.. SequentialIterator
     SongIterator <|.. ShuffleIterator
     Playlist ..> SongIterator : creates
     Playlist "1" *-- "*" Song : contains
     SequentialIterator ..> Song : traverses
     ShuffleIterator ..> Song : traverses
-    Playlist ..> IteratorType : uses
 ```
 
-## Key Concept: Aggregate & Iterator
-
-| Component | Responsibility |
-| :--- | :--- |
-| **Iterator Interface** | Defines the methods for accessing and traversing elements (`hasNext`, `next`). |
-| **Concrete Iterator** | Implements the traversal logic for a specific algorithm. |
-| **Aggregate Interface** | Defines a method for creating an Iterator object. |
-| **Concrete Aggregate** | Implements the creation of an Iterator and holds the data. |
-
-## Examples in this Folder
-
-### [Song Playlist System](./GoodCode/)
-- **Problem**: In a music app, you might want to play songs sequentially, or shuffle them, or filter by genre. 
-- **Bad Code**: The `BadPlaylist` returns its internal `ArrayList`. The client must manually implement shuffle logic. If the playlist changes to an `Array`, the client breaks.
-- **Good Code**: The `Playlist` provides `SequentialIterator` and `ShuffleIterator`. The client doesn't know how the songs are stored or how the shuffling algorithm works.
+### 2. BookShelf Implementation (Aggregate-Passing Approach)
+```mermaid
+classDiagram
+    class Iterator { <<interface>> +hasNext(), +next() }
+    class Aggregate { <<interface>> +createIterator(BookShelfIteratorType) }
+    class BookShelf { -List books, +getBookAt(int), +getLength() }
+    class ForwardBookShelfIterator { -BookShelf bookShelf, +hasNext(), +next() }
+    class ReverseBookShelfIterator { -BookShelf bookShelf, +hasNext(), +next() }
+    class BookShelfIteratorType { <<enumeration>> FORWARD, REVERSE }
+    class Book { -String name }
+    
+    Aggregate <|.. BookShelf
+    Iterator <|.. ForwardBookShelfIterator
+    Iterator <|.. ReverseBookShelfIterator
+    BookShelf ..> ForwardBookShelfIterator : creates
+    BookShelf ..> ReverseBookShelfIterator : creates
+    BookShelfIterator --> BookShelf : reaches back into
+    BookShelf "1" *-- "*" Book : contains
+```
 
 ---
 
 ## How to Run
 
-### Good Code (Recommended)
-- `GoodCode/PlaylistMain.java` (Demonstrates clean, decoupled iteration)
+### Music Player
+- [PlaylistMain.java](./MusicPlayerExample/GoodCode/PlaylistMain.java)
+- [BadPlaylistMain.java](./MusicPlayerExample/BadCode/BadPlaylistMain.java)
 
-### Bad Code (Anti-pattern)
-- `BadCode/BadPlaylistMain.java` (Exposes internal state and leaks logic)
+### BookShelf
+- [BookShelfMain.java](./BookShelfExample/GoodCode/BookShelfMain.java)
+- [BadBookShelfMain.java](./BookShelfExample/BadCode/BadBookShelfMain.java)
 
 ---
 ## Navigation
-- [Good Code Implementation](./GoodCode/)
-- [Bad Code Implementation](./BadCode/)
+- [Music Player Example](./MusicPlayerExample/)
+- [BookShelf Example](./BookShelfExample/)
