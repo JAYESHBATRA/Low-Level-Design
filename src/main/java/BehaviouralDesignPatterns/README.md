@@ -8,8 +8,10 @@ Behavioural design patterns are concerned with algorithms and the assignment of 
 
 - **Strategy Pattern**: Encapsulates interchangeable algorithms and lets you switch between them at runtime.
 - **Observer Pattern**: Defines a one-to-many dependency so that when one object changes state, all its dependents are notified automatically.
+- **Iterator Pattern**: Provides a way to access elements of a collection sequentially without exposing its internal representation.
 
 ---
 ## Navigation
 - [Strategy Pattern](./StrategyPattern/)
 - [Observer Pattern](./ObserverPattern/)
+- [Iterator Pattern](./IteratorPattern/)
