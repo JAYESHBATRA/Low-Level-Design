@@ -32,12 +32,17 @@ classDiagram
     }
     class Playlist {
         -List songs
-        +createSequentialIterator() SongIterator
-        +createShuffleIterator() SongIterator
+        +getIterator(IteratorType type) SongIterator
+    }
+    class IteratorType {
+        <<enumeration>>
+        SEQUENTIAL
+        SHUFFLE
     }
     SongIterator <|.. SequentialIterator
     SongIterator <|.. ShuffleIterator
     Playlist ..> SongIterator : creates
+    Playlist ..> IteratorType : uses
 ```
 
 ## Key Concept: Aggregate & Iterator

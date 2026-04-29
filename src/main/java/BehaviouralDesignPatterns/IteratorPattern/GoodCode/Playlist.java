@@ -13,11 +13,13 @@ public class Playlist {
         songs.add(song);
     }
 
-    public SongIterator createSequentialIterator() {
-        return new SequentialIterator(songs);
-    }
-
-    public SongIterator createShuffleIterator() {
-        return new ShuffleIterator(songs);
+    public SongIterator getIterator(IteratorType type) {
+        switch (type) {
+            case SHUFFLE:
+                return new ShuffleIterator(songs);
+            case SEQUENTIAL:
+            default:
+                return new SequentialIterator(songs);
+        }
     }
 }
