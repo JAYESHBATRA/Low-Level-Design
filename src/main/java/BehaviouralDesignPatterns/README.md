@@ -10,6 +10,7 @@ Behavioural design patterns are concerned with algorithms and the assignment of 
 - **Observer Pattern**: Defines a one-to-many dependency so that when one object changes state, all its dependents are notified automatically.
 - **Iterator Pattern**: Provides a way to access elements of a collection sequentially without exposing its internal representation.
 - **Command Pattern**: Encapsulates a request as an object, allowing you to parameterize clients with different requests and support undoable operations.
+- **State Pattern**: Allows an object to alter its behavior when its internal state changes, helping to eliminate complex conditional logic.
 
 ---
 ## Navigation
@@ -17,3 +18,4 @@ Behavioural design patterns are concerned with algorithms and the assignment of 
 - [Observer Pattern](./ObserverPattern/)
 - [Iterator Pattern](./IteratorPattern/)
 - [Command Pattern](./CommandPattern/)
+- [State Pattern](./StatePattern/)
