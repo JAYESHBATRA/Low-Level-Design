@@ -1,17 +1,9 @@
 package BehaviouralDesignPatterns.CommandPattern.HomeAutomationExample.GoodCode;
 
 /**
- * Receiver: Light
- */
-class Light {
-    public void turnOn() { System.out.println("Light is ON"); }
-    public void turnOff() { System.out.println("Light is OFF"); }
-}
-
-/**
  * Receiver: Air Conditioner
  */
-class AirConditioner {
+public class AirConditioner {
     private int temperature;
     
     public void turnOn() { 

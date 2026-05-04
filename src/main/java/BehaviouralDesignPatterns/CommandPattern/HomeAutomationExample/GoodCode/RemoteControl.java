@@ -4,7 +4,7 @@ import java.util.Stack;
 
 /**
  * Invoker: Remote Control
- * It just executes commands and can track history for undo.
+ * It executes commands and manages history for Undo.
  */
 public class RemoteControl {
     private Command slot;

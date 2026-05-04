@@ -58,6 +58,7 @@ classDiagram
 
 ### 1. [Home Automation](./HomeAutomationExample/)
 - **Concept**: A smart remote that only knows about the `Command` interface, allowing it to control any device without being hardcoded to it.
+- **Features**: Supports **Undo** operations using a stack-based history mechanism.
 
 ---
 
